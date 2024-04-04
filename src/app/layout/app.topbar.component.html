@@ -1,8 +1,10 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo" routerLink="">
-        <img src="assets/layout/images/{{layoutService.config().colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg"
+        <img src="../../favicon.ico"
             alt="logo">
-        <span>ATLAS</span>
+        <!-- <img src="assets/layout/images/{{layoutService.config().colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg"
+            alt="logo"> -->
+        <span>TLAS</span>
     </a>
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
@@ -23,11 +25,10 @@
 
         <button class="p-link layout-topbar-button" (click)="changeTheme()">
             @if(colorScheme == 'dark'){
-            <i class="pi pi-moon"></i>
+            <i class="pi pi-sun"></i>
             }
             @else {
-            <!-- <i class="pi pi-circle-fill"></i> -->
-            <i class="fa-light fa-chevron-down"></i>
+            <i class="pi pi-moon"></i>
             }
         </button>
     </div>
