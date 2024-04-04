@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from './service/app.layout.service';
 import { MenuService } from './app.menu.service';
+import { AuthserviceService } from '../service/authservice.service';
 
 @Component({
     selector: 'app-topbar',
@@ -9,6 +10,7 @@ import { MenuService } from './app.menu.service';
 })
 export class AppTopBarComponent {
     items!: MenuItem[];
+    itemsTopbar: MenuItem[] | undefined;
     @Input() minimal: boolean = false;
 
     scales: number[] = [12, 13, 14, 15, 16];
@@ -20,6 +22,7 @@ export class AppTopBarComponent {
 
     constructor(
         public layoutService: LayoutService,
+        private authService: AuthserviceService,
         public menuService: MenuService
     ) {
         this.layoutService.config.update((config) => ({
@@ -28,6 +31,33 @@ export class AppTopBarComponent {
             theme: 'lara-dark-teal',
             colorScheme: 'dark',
         }));
+        this.itemsTopbar = [
+            {
+                label: 'Optiones',
+                items: [
+                    {
+                        label: 'Perfil',
+                        icon: 'pi pi-user',
+                        command: () => {
+                            this.profile();
+                        },
+                    },
+                    {
+                        label: 'Logout',
+                        icon: 'pi pi-power-off',
+                        command: () => {
+                            this.logout();
+                        },
+                    },
+                ],
+            },
+        ];
+    }
+
+    profile() {}
+
+    logout() {
+        this.authService.logout();
     }
 
     set theme(val: string) {

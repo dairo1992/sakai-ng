@@ -17,6 +17,7 @@ import { AppFooterComponent } from './app.footer.component';
 import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from './app.sidebar.component';
 import { AppLayoutComponent } from './app.layout.component';
+import { PrimeModuleModule } from './prime-module/prime-module.module';
 
 @NgModule({
     declarations: [
@@ -32,12 +33,7 @@ import { AppLayoutComponent } from './app.layout.component';
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        InputTextModule,
-        SidebarModule,
-        BadgeModule,
-        RadioButtonModule,
-        InputSwitchModule,
-        RippleModule,
+        PrimeModuleModule,
         RouterModule,
         AppConfigModule,
     ],

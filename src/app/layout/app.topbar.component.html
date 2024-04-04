@@ -1,7 +1,6 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo" routerLink="">
-        <img src="../../favicon.ico"
-            alt="logo">
+        <img src="../../favicon.ico" alt="logo">
         <!-- <img src="assets/layout/images/{{layoutService.config().colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg"
             alt="logo"> -->
         <span>TLAS</span>
@@ -18,7 +17,8 @@
 
     <div #topbarmenu class="layout-topbar-menu"
         [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button">
+        <p-menu #menu [model]="itemsTopbar" [popup]="true"></p-menu>
+        <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
@@ -32,4 +32,9 @@
             }
         </button>
     </div>
+    <!-- <div #topbarmenu class="layout-topbar-menu">
+        
+        <p-button icon="pi pi-user" [rounded]="true" (click)="menu.toggle($event)" severity="info"
+            [outlined]="true"></p-button>
+    </div> -->
 </div>
