@@ -14,7 +14,14 @@ export class AppConfigComponent {
     constructor(
         public layoutService: LayoutService,
         public menuService: MenuService
-    ) {}
+    ) {
+        this.layoutService.config.update((config) => ({
+            ...config,
+            ripple: true,
+            theme: 'lara-dark-teal',
+            colorScheme: 'dark',
+        }));
+    }
 
     get visible(): boolean {
         return this.layoutService.state.configSidebarVisible;
@@ -43,22 +50,7 @@ export class AppConfigComponent {
         }));
     }
 
-    get inputStyle(): string {
-        return this.layoutService.config().inputStyle;
-    }
-    set inputStyle(_val: string) {
-        this.layoutService.config().inputStyle = _val;
-    }
-
-    get ripple(): boolean {
-        return this.layoutService.config().ripple;
-    }
-    set ripple(_val: boolean) {
-        this.layoutService.config.update((config) => ({
-            ...config,
-            ripple: _val,
-        }));
-    }
+    
 
     set theme(val: string) {
         this.layoutService.config.update((config) => ({
@@ -70,23 +62,14 @@ export class AppConfigComponent {
         return this.layoutService.config().theme;
     }
 
-    set colorScheme(val: string) {
-        this.layoutService.config.update((config) => ({
-            ...config,
-            colorScheme: val,
-        }));
-    }
-    get colorScheme(): string {
-        return this.layoutService.config().colorScheme;
-    }
-
+    
     onConfigButtonClick() {
         this.layoutService.showConfigSidebar();
     }
 
     changeTheme(theme: string, colorScheme: string) {
         this.theme = theme;
-        this.colorScheme = colorScheme;
+        
     }
 
     decrementScale() {
